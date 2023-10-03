@@ -1,7 +1,8 @@
 import React, {useState}from 'react'
 import axios from "axios"
+import Header from '../Components/Header';
 
-const AddFood=({switchView , view})=>{
+const AddFood=()=>{
     const[NewFood,setNewFood]=useState({name:"",desc:"",imgUrl:"",price:""})
     console.log(NewFood);
     const handleSubmit=(event)=>{
@@ -20,9 +21,11 @@ setNewFood({...NewFood,[inputName]:value})
 
     return(
         <div className="background_area">
+        
         <div className="bg-box">
           <img src="src/assets/images/backgroundImg.jpg" alt="" />
         </div>
+        <Header />
         <section className="food_section layout_padding">
         <div className="filters-content">
           <div clasName="container ">

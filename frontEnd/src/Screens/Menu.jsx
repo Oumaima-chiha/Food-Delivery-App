@@ -1,9 +1,10 @@
 import React,{useState,useEffect} from 'react'
-import Header from'../Components/Header'
 import FoodList from '../Components/FoodList'
 import $ from "jquery"
+import Header from '../Components/Header'
 
-const Menu=({handledetail})=>{
+
+const Menu=()=>{
   const [data,setdata]=useState([])
   useEffect( ()=>{
     $.ajax({
@@ -20,7 +21,7 @@ const Menu=({handledetail})=>{
         <div className="bg-box">
           <img src="src/assets/images/backgroundImg.jpg" alt="" />
         </div>
-<Header/>
+        <Header />
 <section className="food_section layout_padding">
     <div className="container">
       <div className="heading_container heading_center">
@@ -28,7 +29,7 @@ const Menu=({handledetail})=>{
           Our Menu
         </h2>
       </div>
-   <FoodList items={data} handledetail={handledetail}/>
+   <FoodList items={data} />
     </div>
   </section>
 

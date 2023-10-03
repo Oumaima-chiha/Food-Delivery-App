@@ -1,12 +1,13 @@
 import React from "react";
+import {NavLink} from "react-router-dom";
 
-const Header = ({ switchView, view }) => {
-  console.log(view);
+const Header = () => {
+
   return (
     <header className="header_section">
       <div className="container">
         <nav className="navbar navbar-expand-lg navigbar ">
-          <a className="navbar-brand" href="index.html">
+          <a className="navbar-brand" href="/">
             <span>Take Away</span>
           </a>
           <button
@@ -23,31 +24,29 @@ const Header = ({ switchView, view }) => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav  mx-auto ">
               <li className="nav-item">
-                <p
-                  className="nav-link"
-                  onClick={() => {
-                    switchView("addfood");
-                  }}
+                <NavLink
+                  className={({isActive})=>isActive?"nav-link active":"nav-link"}
+                  to={'/addFood'}
                 >
-                  Add food<span className="sr-only">(current)</span>
-                </p>
-              </li>
-
-              <li className="nav-item">
-                <a className="nav-link" href="/">
-                  Home <span className="sr-only">(current)</span>
-                </a>
+                  Add food
+                </NavLink>
               </li>
               <li className="nav-item">
-                <p
+                <NavLink
+                  className={({isActive})=>isActive?"nav-link active":"nav-link"}
+                  to="/">
+                  Home
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <a
                   className="nav-link"
                   href="menu"
                   onClick={() => {
-                    switchView("menu");
                   }}
                 >
                   Menu
-                </p>
+                </a>
               </li>
             </ul>
             <div>
@@ -55,6 +54,30 @@ const Header = ({ switchView, view }) => {
                 Order Online
               </a>
             </div>
+            <div>
+              <li  className="nav-item">
+                <a
+                  className="nav-link"
+                 href={"signup"}
+                >
+                 Sign Up<span className="sr-only">(current)</span>
+                </a>
+              </li>
+
+              </div>
+              <div>
+              <li  className="nav-item">
+                <a
+                  className="nav-link"
+                  href={"login"}
+                >
+                Log In <span className="sr-only">(current)</span>
+                </a>
+              </li>
+
+              </div>
+
+
           </div>
         </nav>
       </div>
