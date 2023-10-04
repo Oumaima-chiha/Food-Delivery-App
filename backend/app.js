@@ -6,8 +6,8 @@ var cors = require('cors')
 const app = express();
 
 //Require application Route modules
-const food = require('../backend/Database/routes/food.js');
-
+const food = require('../backend/routes/food.js');
+const owner = require('../backend/routes/owner.js');
 
 //Middleware to parse incoming requests with JSON and urlencoded payloads
 app.use(express.json());
@@ -16,6 +16,7 @@ app.use(cors())
 
 //Add Routes to the middleware handling path, specifying the respective URL path
 app.use('/api/food', food);
+app.use('/api/owner', owner);
 
 
 module.exports = app; // export the express app.

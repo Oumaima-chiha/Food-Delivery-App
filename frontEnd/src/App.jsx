@@ -6,7 +6,7 @@ import AddFood from "./Screens/AddFood";
 import Home from "./Screens/Home";
 import FoodDetails from"./Components/FoodDetails";
 import SignUp from "./Screens/SignUp.jsx";
-import LogIn from "./Components/LogIn";
+import LogIn from "./Screens/LogIn";
 import Customer from './Components/customer';
 import Own from './Components/Own'
 const App =()=>{

@@ -2,14 +2,81 @@ import React from "react";
 
 const Customer = () => {
   return (
-    <div>
-      <input name="name" type="text" placeholder="name" />
-      <input name="lastName" type="text" placeholder="last Name" />
-      <input name="email" type="text" placeholder=" email" />
-      <input name="password" type="text" placeholder="password" />
-      <input name="address" type="text" placeholder="address" />
-      <input name="phoneNumber" type="text" placeholder="phone number" />
+    <div className={"form-container d-flex justify-content-center align-items-center"}>
+    <form>
+       <div className="container h-100" id="body">
+  <div className="d-flex justify-content-center h-100">
+    <div className="user_card">
+      <div className="d-flex justify-content-center">
+        <div className="brand_logo_container">
+          <img src="https://thumbs.dreamstime.com/b/take-away-bento-box-japanese-wrapping-cloth-furoshiki-vector-japanese-style-58279035.jpg" className="brand_logo" alt="Logo"/>
+        </div>
+      </div>
+      <div className="d-flex justify-content-center form_container">
+        <form>
+          <div className="input-group mb-3">
+            <div className="input-group-append">
+              <span className="input-group-text"><i className="fas fa-user"></i></span>
+            </div>
+            <input type="text" name="" className="form-control input_user" value="" placeholder="Name"/>
+          </div>
+          
+          <div className="input-group mb-2">
+            <div className="input-group-append">
+              <span className="input-group-text"><i className="fas fa-key"></i></span>
+            </div>
+            <input type="password" name="" className="form-control input_pass" value="" placeholder="Last Name"/>
+          </div>
+          <div className="input-group mb-3">
+            <div className="input-group-append">
+              <span className="input-group-text"><i className="fas fa-user"></i></span>
+            </div>
+            <input type="text" name="" className="form-control input_user" value="" placeholder="Address"/>
+          </div>
+          
+          <div className="input-group mb-2">
+            <div className="input-group-append">
+              <span className="input-group-text"><i className="fas fa-key"></i></span>
+            </div>
+            <input type="password" name="" className="form-control input_pass" value="" placeholder="phone-number"/>
+          </div>
+          <div className="input-group mb-3">
+            <div className="input-group-append">
+              <span className="input-group-text"><i className="fas fa-user"></i></span>
+            </div>
+            <input type="text" name="" className="form-control input_user" value="" placeholder="email"/>
+          </div>
+          
+          <div className="input-group mb-2">
+            <div className="input-group-append">
+              <span className="input-group-text"><i className="fas fa-key"></i></span>
+            </div>
+            <input type="password" name="" className="form-control input_pass" value="" placeholder="password"/>
+          </div>
+          <div className="form-group">
+            <div className="custom-control custom-checkbox">
+              <input type="checkbox" className="custom-control-input" id="customControlInline"/>
+             
+            </div>
+          </div>
+            <div className="d-flex justify-content-center mt-3 login_container">
+         <button type="button" name="button" className="btn login_btn">Register</button>
+         </div>
+        </form>
+      </div>
+  
+      <div className="mt-4">
+        
+        <div className="d-flex justify-content-center links">
+         
+        </div>
+      </div>
     </div>
+  </div>
+</div>
+</form>
+</div>
   );
 };
+
 export default Customer;

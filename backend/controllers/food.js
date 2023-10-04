@@ -1,4 +1,4 @@
-const food = require("../models/food.js");
+const food = require("../Database/models/food.js");
 
 
 
