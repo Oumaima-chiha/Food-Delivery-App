@@ -56,11 +56,11 @@ const Customer = () => {
           <div className="form-group">
             <div className="custom-control custom-checkbox">
               <input type="checkbox" className="custom-control-input" id="customControlInline"/>
-             
+              <button type="button" name="button" className="btn login_btn">Register</button>
             </div>
           </div>
             <div className="d-flex justify-content-center mt-3 login_container">
-         <button type="button" name="button" className="btn login_btn">Register</button>
+        
          </div>
         </form>
       </div>

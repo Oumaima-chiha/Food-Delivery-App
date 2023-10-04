@@ -1,20 +1,20 @@
-const owner = require("../Database/models/owner.js");
+const customer = require("../Database/models/customer.js");
 
 
 
 module.exports = {
   
-    getAllOwner: function(req, res) {
-        owner.getAll(function(err, results) {
+    getAllCustomer: function(req, res) {
+        customer.getAll(function(err, results) {
             if(err) res.status(500).send(err);
             else res.json(results)
         })
 
     },
    
-    loginOwner: function(req, res) {
-        const {username,password} = req.body
-      owner.getOne(function(err, results){
+    loginCustomer: function(req, res) {
+        const {userName,password} = req.body
+      customer.getOne(function(err, results){
             if(err) res.status(500).send(err);
             else if (results.length >0)
             {
@@ -27,17 +27,17 @@ module.exports = {
             }
             else 
             res.status(401).send('user not')
-        },username) 
+        },userName) 
 
     },
     
-    registerOwner: function(req, res) {
-        const {username,email,password,restaurant_name,food_category} = req.body;
+    registerCustomer: function(req, res) {
+        const {iduser,userName,userAdress,userNumber,userLastName} = req.body;
    
-        owner.add( function(err, results){
+        customer.add( function(err, results){
             if(err) res.status(500).send(err);
             else res.json(results)
-        },username,email,password,restaurant_name,food_category)
+        },iduser,userName,userAdress,userNumber,userLastName)
     },
 
 

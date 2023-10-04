@@ -98,4 +98,20 @@ CREATE TABLE IF NOT EXISTS `mydb`.`cart_food`
     PRIMARY KEY (`cart_food_id`),
     INDEX `fk_cart_food_cart1_idx` (`cart_foodOrder` ASC),
     INDEX `fk_cart_food_food1_idx` (`food_Idfood` ASC),
-... (17 lignes restantes)
+    CONSTRAINT `fk_cart_food_cart1`
+        FOREIGN KEY (`cart_foodOrder`)
+            REFERENCES `mydb`.`cart` (`foodOrder`)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION,
+    CONSTRAINT `fk_cart_food_food1`
+        FOREIGN KEY (`food_Idfood`)
+            REFERENCES `mydb`.`food` (`Idfood`)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION
+)
+    ENGINE = InnoDB;
+
+
+SET SQL_MODE = @OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS = @OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS = @OLD_UNIQUE_CHECKS;
