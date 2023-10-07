@@ -28,7 +28,7 @@ module.exports = {
         food.add( function(err, results){
             if(err) res.status(500).send(err);
             else res.json(results)
-        },foood.name,foood.price,foood.desc, foood.imgUrl)
+        },foood.name,foood.price,foood.desc, foood.imgUrl,foood.Owner_idOwner)
     },
     updateFood:function(req,res){
         const idFood=req.params.id
@@ -44,7 +44,16 @@ module.exports = {
         if(err) res.status(500).send(err);
         else res.json(results)
     },Idfood)  
-}
+},
+addFoodToCart:function(req,res){
+     const {idFood,idCart}=req.body
+     food.addFoodToCart(function(err,results){
+        if(err) res.status(500).send(err);
+            else res.json(results)
+        },idCart,idFood)
+    },
+    
+
    
 
 }

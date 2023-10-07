@@ -1,11 +1,27 @@
-import React from "react";
+import React,{useState}from "react";
 import Header from "./Header";
-import backgroundImg from '../assets/images/backgroundImg.jpg'
+import axios from "axios";
 
 const Owner = () => {
+  const[owner,setOwner]=useState({})
+  const handleChange=(event)=>{
+    const input=event.target.name
+    const value=event.target.value
+    setOwner({...owner,[input]:value})
+  }
+  const handleSubmit=(event)=>{
+    event.preventDefault()
+    axios.post("http://localhost:3000/api/owner/register",owner).then(res=>{
+      console.log(res)
+    }).catch(err=>{
+      console.log(err)
+      alert("Register failed");
+    })
+
+  }
   return (
     <div className={"form-container d-flex justify-content-center align-items-center"}>
-    <form>
+    <form onSubmit={handleSubmit}>
        <div className="container h-100" id="body">
   <div className="d-flex justify-content-center h-100">
     <div className="user_card">
@@ -15,56 +31,43 @@ const Owner = () => {
         </div>
       </div>
       <div className="d-flex justify-content-center form_container">
-        <form>
+        <div>
           <div className="input-group mb-3">
             <div className="input-group-append">
               <span className="input-group-text"><i className="fas fa-user"></i></span>
             </div>
-            <input type="text" name="" className="form-control input_user" value="" placeholder="Name"/>
+            <input type="text" name="restaurant_name" className="form-control input_user" value={owner.restaurant_name} placeholder="Restaurant-Name" onChange={handleChange} required/>
           </div>
           
           <div className="input-group mb-2">
             <div className="input-group-append">
               <span className="input-group-text"><i className="fas fa-key"></i></span>
             </div>
-            <input type="password" name="" className="form-control input_pass" value="" placeholder="Last Name"/>
+            <input type="text" name="food_category" className="form-control input_pass" value={owner.food_category} placeholder="food-category" onChange={handleChange} required/>
           </div>
           <div className="input-group mb-3">
             <div className="input-group-append">
               <span className="input-group-text"><i className="fas fa-user"></i></span>
             </div>
-            <input type="text" name="" className="form-control input_user" value="" placeholder="Restaurant-Name"/>
+            <input type="email" name="email" className="form-control input_user" value={owner.email} placeholder="email" onChange={handleChange} required/>
           </div>
           
           <div className="input-group mb-2">
             <div className="input-group-append">
               <span className="input-group-text"><i className="fas fa-key"></i></span>
             </div>
-            <input type="password" name="" className="form-control input_pass" value="" placeholder="food-category"/>
-          </div>
-          <div className="input-group mb-3">
-            <div className="input-group-append">
-              <span className="input-group-text"><i className="fas fa-user"></i></span>
-            </div>
-            <input type="text" name="" className="form-control input_user" value="" placeholder="email"/>
-          </div>
-          
-          <div className="input-group mb-2">
-            <div className="input-group-append">
-              <span className="input-group-text"><i className="fas fa-key"></i></span>
-            </div>
-            <input type="password" name="" className="form-control input_pass" value="" placeholder="password"/>
+            <input type="password" name="password" className="form-control input_pass" value={owner.password} placeholder="password" onChange={handleChange} required/>
           </div>
           <div className="form-group">
             <div className="custom-control custom-checkbox">
               <input type="checkbox" className="custom-control-input" id="customControlInline"/>
-              <button type="button" name="button" className="btn login_btn">Register</button>
+              <button type="submit" name="button" className="btn login_btn">Register</button>
             </div>
           </div>
             <div className="d-flex justify-content-center mt-3 login_container">
         
          </div>
-        </form>
+        </div>
       </div>
   
       <div className="mt-4">

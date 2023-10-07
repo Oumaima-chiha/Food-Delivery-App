@@ -1,13 +1,22 @@
 import React from "react";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
-const FoodItem = ({ item, handledetail }) => {
-  {
-    console.log(handledetail);
-  }
+const FoodItem = ({ item }) => {
+  const navigate = useNavigate();
   const handleDelete = () => {
     axios
       .delete("http://localhost:3000/api/food/delete/" + item.Idfood)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const addToCart = () => {
+    axios
+      .post("http://localhost:3000/api/food/addTocart/",item.Idfood)
       .then((res) => {
         console.log(res);
       })
@@ -24,7 +33,7 @@ const FoodItem = ({ item, handledetail }) => {
             src={item.imgUrl}
             alt=""
             onClick={() => {
-              handledetail("update", item);
+             navigate("/update",{state:{item}})
             }}
           />
         </div>
@@ -38,15 +47,14 @@ const FoodItem = ({ item, handledetail }) => {
                 handleDelete();
               }}
             >
-              {" "}
-              Delete{" "}
+              Delete
             </button>
-            <a href="">
+            <button onClick={addToCart}>
               <i
                 className={"fa fa-shopping-cart"}
                 style={{ color: "#ffffff" }}
               ></i>
-            </a>
+            </button>
           </div>
         </div>
       </div>

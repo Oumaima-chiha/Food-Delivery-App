@@ -23,7 +23,7 @@ setNewFood({...NewFood,[inputName]:value})
         <div className="background_area">
         
         <div className="bg-box">
-          <img src="src/assets/images/backgroundImg.jpg" alt="" />
+          <img src="src/assets/images/hero-bg.jpg" alt="" />
         </div>
         <Header />
         <section className="food_section layout_padding">

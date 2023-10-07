@@ -9,6 +9,7 @@ import SignUp from "./Screens/SignUp.jsx";
 import LogIn from "./Screens/LogIn";
 import Customer from './Components/customer';
 import Own from './Components/Own'
+import Cart from './Components/cart';
 const App =()=>{
   return (
     <Router>
@@ -21,6 +22,8 @@ const App =()=>{
           <Route path="/signup/customer" Component={Customer}/>
           <Route path="/signup/own" Component={Own}/>
           <Route path="/login" Component={LogIn}/>
+          <Route path="/cart" Component={Cart}/>
+          
       </Routes>
     </Router>
   );

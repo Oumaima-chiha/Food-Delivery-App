@@ -20,12 +20,16 @@ USE `mydb`;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`customer`
 (
-    `iduser`       INT         NOT NULL,
-    `userName`     VARCHAR(45) NOT NULL,
-    `userLastName` VARCHAR(45) NOT NULL,
-    `userAdress`   VARCHAR(45) NOT NULL,
-    `userNumber`   VARCHAR(45) NOT NULL,
-    PRIMARY KEY (`iduser`)
+    `iduser`       INT         NOT NULL AUTO_INCREMENT,
+    `password`        VARCHAR(32)  NOT NULL,
+    `lastName` VARCHAR(45) NOT NULL,
+    `name` VARCHAR(45) NOT NULL,
+    `email`      VARCHAR(255) NULL,
+    `address`      VARCHAR(255) NULL,
+    `phoneNumber`   VARCHAR(45) NOT NULL,
+    `create_time`     TIMESTAMP    NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`iduser`),
+    UNIQUE INDEX `email_UNIQUE` (`email` ASC)
 )
     ENGINE = InnoDB;
 
@@ -35,10 +39,11 @@ CREATE TABLE IF NOT EXISTS `mydb`.`customer`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`cart`
 (
-    `foodOrder`       INT         NOT NULL,
+    `foodOrder`       INT         NOT NULL AUTO_INCREMENT,
     `orderStatus`     VARCHAR(45) NOT NULL,
     `customer_iduser` INT         NOT NULL,
-    PRIMARY KEY (`foodOrder`),
+    `create_time`     TIMESTAMP    NULL DEFAULT CURRENT_TIMESTAMP,
+     PRIMARY KEY (`foodOrder`),
     INDEX `fk_cart_customer1_idx` (`customer_iduser` ASC),
     CONSTRAINT `fk_cart_customer1`
         FOREIGN KEY (`customer_iduser`)
@@ -54,7 +59,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`cart`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Owner`
 (
-    `username`        VARCHAR(16)  NOT NULL,
     `email`           VARCHAR(255) NULL,
     `password`        VARCHAR(32)  NOT NULL,
     `create_time`     TIMESTAMP    NULL DEFAULT CURRENT_TIMESTAMP,
@@ -62,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Owner`
     `food_category`   VARCHAR(45)  NULL,
     `idOwner`         INT          NOT NULL AUTO_INCREMENT,
     PRIMARY KEY (`idOwner`),
-    UNIQUE INDEX `username_UNIQUE` (`username` ASC)
+    UNIQUE INDEX `email_UNIQUE` (`email` ASC)
 );
 
 
@@ -73,9 +77,9 @@ CREATE TABLE IF NOT EXISTS `mydb`.`food`
 (
     `Idfood`         INT          NOT NULL AUTO_INCREMENT,
     `name`           VARCHAR(45)  NOT NULL,
-    `imgUrl`         VARCHAR(245) NOT NULL,
+    `imgUrl`         VARCHAR(445) NOT NULL,
     `price`          VARCHAR(45)  NOT NULL,
-    `desc`           VARCHAR(245) NOT NULL,
+    `desc`           VARCHAR(445) NOT NULL,
     `Owner_idOwner`  INT          NOT NULL,
      PRIMARY KEY (`Idfood`),
     CONSTRAINT `fk_food_Owner1`

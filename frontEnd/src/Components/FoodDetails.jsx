@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
+import {useLocation} from "react-router-dom";
 
-const FoodDetails = ({ detail }) => {
-  const [updateFood, setUpdateFood] = useState(detail);
+const FoodDetails = () => {
+  const location=useLocation()
+  const {item}=location.state
+  const [updateFood, setUpdateFood] = useState(item);
   const [edit, setEdit] = useState(false);
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .put("http://localhost:3000/api/food/update/" + detail.Idfood, updateFood)
+      .put("http://localhost:3000/api/food/update/" + item.Idfood, updateFood)
       .then((res) => {
         console.log(res);
         setEdit(false);
@@ -27,12 +30,12 @@ const FoodDetails = ({ detail }) => {
   return (
     <div className="background_area">
       <div className="bg-box">
-        <img src="src/assets/images/backgroundImg.jpg" alt="" />
+        <img src="src/assets/images/hero-bg.jpg" alt="" />
       </div>
       {!edit ? (
         <section className="food_section layout_padding">
           <div className="filters-content">
-            <div clasName="container ">
+            <div className="container ">
               <div className="box">
                 <div className="img-box">
                   <img src={updateFood.imgUrl} />
@@ -61,7 +64,7 @@ const FoodDetails = ({ detail }) => {
       ) : (
         <section className="food_section layout_padding">
           <div className="filters-content">
-            <div clasName="container ">
+            <div className="container ">
               <form
                 onSubmit={(event) => {
                   handleSubmit(event);

@@ -9,6 +9,7 @@ const app = express();
 const food = require('../backend/routes/food.js');
 const owner = require('../backend/routes/owner.js');
 const customer = require('../backend/routes/customer.js');
+const cart = require('../backend/routes/cart.js');
 
 //Middleware to parse incoming requests with JSON and urlencoded payloads
 app.use(express.json());
@@ -19,6 +20,7 @@ app.use(cors())
 app.use('/api/food', food);
 app.use('/api/owner', owner);
 app.use('/api/customer', customer);
+app.use('/api/cart', cart);
 
 
 module.exports = app; // export the express app.

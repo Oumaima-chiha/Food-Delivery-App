@@ -9,17 +9,17 @@ module.exports = {
       });
     },
       
-      getOne: function(callback,username) {
-        const sql = 'SELECT * FROM `owner`where username=?'
-        conn.query(sql,[username], function (error, results, fields) {
+      getOne: function(callback,email) {
+        const sql = 'SELECT * FROM `owner`where email=?'
+        conn.query(sql,[email], function (error, results, fields) {
           callback(error, results);
         });
       
       },
       
-      add: function (callback,username,email,password,restaurant_name,food_category) {
+      add: function (callback,email,password,restaurant_name,food_category) {
         const sql = 'INSERT INTO owner SET ?'
-        conn.query(sql,{username,email,password,restaurant_name,food_category}, function (error, results, fields) {
+        conn.query(sql,{email,password,restaurant_name,food_category}, function (error, results, fields) {
           callback(error, results);
       } )
     },
