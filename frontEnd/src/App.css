@@ -114,7 +114,7 @@ a:focus {
 }
 
 .navigbar .navbar-nav {
-  padding-left: 18%;
+  padding-left: 2%;
 }
 
 .navigbar .navbar-nav .nav-item .nav-link {
@@ -131,17 +131,16 @@ a:focus {
   color: #ffbe33;
 }
 
-.navigbar .nav_search-btn {
-  width: auto;
-  height: auto;
-  padding: 0;
-  border: none;
-  color: #ffffff;
-  margin: 0 10px;
+
+.navigbar input[type="text"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
 }
 
-.navigbar .nav_search-btn:hover {
-  color: #ffbe33;
+.navigbar .search-bar {
+  padding-right: 10px;
+  column-gap: 5px;
 }
 
 .navigbar .order_online {

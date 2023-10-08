@@ -1,14 +1,17 @@
 import React from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import axiosClient from "../helper/axiosClient";
 
 const FoodItem = ({ item }) => {
   const navigate = useNavigate();
   const handleDelete = () => {
-    axios
+    axiosClient
       .delete("http://localhost:3000/api/food/delete/" + item.Idfood)
       .then((res) => {
         console.log(res);
+        navigate('/menu')
+        alert("item deleted successfully")
       })
       .catch((err) => {
         console.log(err);
@@ -47,7 +50,9 @@ const FoodItem = ({ item }) => {
                 handleDelete();
               }}
             >
-              Delete
+           <i className="fa fa-trash" aria-hidden="true"
+                 style={{ color: "#ffffff" }}
+              ></i>
             </button>
             <button onClick={addToCart}>
               <i

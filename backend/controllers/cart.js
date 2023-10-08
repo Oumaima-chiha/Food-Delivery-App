@@ -19,7 +19,7 @@ module.exports = {
           if (err) {
             res.status(500).send(err);
           } else {
-            // Process the results and group them by foodOrder
+            
             const groupedResults = results.reduce((acc, row) => {
               if (!acc[row.foodOrder]) {
                 acc[row.foodOrder] = {
@@ -29,20 +29,20 @@ module.exports = {
                 };
               }
       
-              // Add the food details to the foodList array
+             
               acc[row.foodOrder].foodList.push({
                 Idfood: row.Idfood,
                 name: row.name,
                 imgUrl: row.imgUrl,
                 price: row.price,
                 desc: row.desc,
-                // Add other properties as needed
+           
               });
       
               return acc;
             }, {});
       
-            // Convert the groupedResults object into an array
+           
             const formattedResults = Object.values(groupedResults);
       
             res.json(formattedResults[0]);

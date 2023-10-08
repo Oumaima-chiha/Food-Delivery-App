@@ -15,13 +15,13 @@ module.exports = {
       if (err) res.status(500).send(err);
       else if (results.length > 0) {
         if (password === results[0].password) {
-         // res.json(results[0]);
+       
           jwt.sign(
             {
               email: results[0].email,
               name: results[0].restaurant_name,
               category: results[0].food_category,
-              id: results[0].idOwner,
+              idOwner: results[0].idOwner,
             },
             "oumayma",
             (err, token) => {

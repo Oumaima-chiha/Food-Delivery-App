@@ -2,15 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
-//   <div class="sign-up-container">
-//   <h1>Sign Up</h1>
-//   <p>Are you signing  as a customer or a restaurant owner?</p>
-//   <div className="choice-buttons" id="body">
-//   <Link className="form-button" id="center" to="/signup/customer">Sign Up as a customer</Link>
-//   <Link  className="form-button" to="/signup/own">Sign Up as a restaurant owner </Link>
-// </div>
-// </div>
-// </div>
+
   
   return (
     <div className="form-container d-flex justify-content-center align-items-center">
@@ -29,7 +21,7 @@ const SignUp = () => {
               <div className="top">
               <div className="d-flex justify-content-center mt-3 login_container">
                 
-              <Link className="form-button" id="center" to="/signup/customer">Sign Up as a customer</Link>
+              <Link className="form-button" id="center" to="/signup/customer" >Sign Up as a customer</Link>
                 </div>
                 
               

@@ -1,9 +1,11 @@
 import React,{useState}from "react";
 import Header from "./Header";
 import axios from "axios";
+import { useNavigate} from "react-router-dom";
 
 const Owner = () => {
   const[owner,setOwner]=useState({})
+  const navigate=useNavigate()
   const handleChange=(event)=>{
     const input=event.target.name
     const value=event.target.value
@@ -13,6 +15,7 @@ const Owner = () => {
     event.preventDefault()
     axios.post("http://localhost:3000/api/owner/register",owner).then(res=>{
       console.log(res)
+      navigate('/logIn')
     }).catch(err=>{
       console.log(err)
       alert("Register failed");

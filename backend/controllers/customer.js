@@ -20,7 +20,7 @@ module.exports = {
               email: results[0].email,
               name: results[0].name,
               lastName: results[0].lastName,
-              id: results[0].iduser,
+              iduser: results[0].iduser,
             },
             "oumayma",
             (err, token) => {

@@ -6,6 +6,8 @@ import Header from '../Components/Header'
 
 const Menu=()=>{
   const [data,setdata]=useState([])
+  const [filterData,setFilterData]=useState([])
+  const [searchTerm,setSearchTerm]=useState('')
   useEffect( ()=>{
     $.ajax({
       method:"Get",
@@ -16,24 +18,30 @@ const Menu=()=>{
       }
     })
   },[])
+
+    const _handleSearch=(val)=>setSearchTerm(val)
+    useEffect(()=>{
+        const newData=data.filter(elem=>elem.name.toLowerCase().includes(searchTerm))
+        setFilterData(newData)
+    },[data,searchTerm])
     return(
         <div className="background_area">
         <div className="bg-box">
           <img src="src/assets/images/hero-bg.jpg" alt="" />
         </div>
-        <Header />
-<section className="food_section layout_padding">
-    <div className="container">
-      <div className="heading_container heading_center">
-        <h2>
-          Our Menu
-        </h2>
-      </div>
-   <FoodList items={data} />
-    </div>
+        <Header hasSearchBar={true} onSearch={_handleSearch} />
+            <section className="food_section layout_padding">
+             <div className="container">
+              <div className="heading_container heading_center">
+                <h2>
+                  Our Menu
+                </h2>
+              </div>
+                 <FoodList items={filterData} />
+            </div>
   </section>
 
         </div>
     )
 }
-export default Menu 
+export default Menu

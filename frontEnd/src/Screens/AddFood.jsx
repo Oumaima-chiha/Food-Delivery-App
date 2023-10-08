@@ -1,14 +1,17 @@
 import React, {useState}from 'react'
-import axios from "axios"
+
 import Header from '../Components/Header';
+import axiosClient from "../helper/axiosClient.js";
+import { useNavigate} from "react-router-dom";
 
 const AddFood=()=>{
     const[NewFood,setNewFood]=useState({name:"",desc:"",imgUrl:"",price:""})
-    console.log(NewFood);
+    const navigate=useNavigate()
     const handleSubmit=(event)=>{
         event.preventDefault()
-    axios.post("http://localhost:3000/api/food/add",NewFood).then((res)=>{
+    axiosClient.post("http://localhost:3000/api/food/add",NewFood).then((res)=>{
         console.log(res);
+        navigate("/menu")
     }).catch((err)=>{
         console.log(err);
     })
@@ -21,16 +24,16 @@ setNewFood({...NewFood,[inputName]:value})
 
     return(
         <div className="background_area">
-        
+
         <div className="bg-box">
           <img src="src/assets/images/hero-bg.jpg" alt="" />
         </div>
         <Header />
         <section className="food_section layout_padding">
         <div className="filters-content">
-          <div clasName="container ">
+          <div className="container ">
 
-        
+
         <form onSubmit={(event)=>{handleSubmit(event)}}>
         <div className="box">
            <div className="detail-box">
@@ -42,7 +45,7 @@ setNewFood({...NewFood,[inputName]:value})
         <div className="Add-item">
         <div className="align-center">
           <div className="grid-container-row">
-          <span> 
+          <span>
            <input placeholder='FoodName' name="name" type='text' onChange={(event)=>handleChange(event)}></input>
            </span>
           <span>
@@ -51,7 +54,7 @@ setNewFood({...NewFood,[inputName]:value})
           <span>
            <input placeholder='imageURL' name="imgUrl"  type='text' onChange={(event)=>handleChange(event)}></input>
            </span>
-          <span> 
+          <span>
            <input placeholder='Price' name="price"  type='text' onChange={(event)=>handleChange(event)}></input>
            </span>
         </div>
